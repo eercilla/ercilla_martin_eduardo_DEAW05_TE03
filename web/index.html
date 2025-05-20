@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente API</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        button { padding: 10px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Cliente API</h1>
+    <button onclick="getUsers()">Obtener Usuarios</button>
+    <div id="result"></div>
+
+    <script>
+        function getUsers() {
+            fetch('http://localhost:8080/api/users')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
